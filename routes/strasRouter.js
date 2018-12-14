@@ -109,11 +109,10 @@ strasRouter.route('/:strasId')
 })
 .delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Strass.findByIdAndRemove(req.params.strasId)
-    .then((Stras) => {
-        console.log('Stras created', Stras);
-        res.statusCode =200;
+    .then((resp) => {
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(Stras);
+        res.json(resp);
     }, (err) => next(err))
     .catch((err) => next(err));
 });

@@ -38,6 +38,6 @@ const workSchema = new Schema({
     timestamps: true
 });
 
-var Works = mongoose.model('Work', workSchema);
+var Works = mongoose.model('Works', workSchema);
 
 module.exports = Works;

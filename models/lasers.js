@@ -42,6 +42,6 @@ const laserSchema = new Schema({
     timestamps: true
 });
 
-var Lasers = mongoose.model('Laser', laserSchema);
+var Lasers = mongoose.model('Lasers', laserSchema);
 
 module.exports = Lasers;

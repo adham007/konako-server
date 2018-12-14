@@ -109,11 +109,10 @@ machineRouter.route('/:machineId')
 })
 .delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Machines.findByIdAndRemove(req.params.machineId)
-    .then((Machine) => {
-        console.log('Machine created', Machine);
-        res.statusCode =200;
+    .then((resp) => {
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(Machine);
+        res.json(resp);
     }, (err) => next(err))
     .catch((err) => next(err));
 });

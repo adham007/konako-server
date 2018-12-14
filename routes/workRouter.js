@@ -109,11 +109,10 @@ workRouter.route('/:workId')
 })
 .delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
     Works.findByIdAndRemove(req.params.workId)
-    .then((Work) => {
-        console.log('Work created', Work);
-        res.statusCode =200;
+    .then((resp) => {
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(Work);
+        res.json(resp);
     }, (err) => next(err))
     .catch((err) => next(err));
 });

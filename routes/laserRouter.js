@@ -108,12 +108,11 @@ laserRouter.route('/:laserId')
     .catch((err) => next(err));
 })
 .delete(cors.corsWithOptions, authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
-    Lasers.findByIdAndRemove(req.params.LaserId)
-    .then((Laser) => {
-        console.log('Laser created', Laser);
-        res.statusCode =200;
+    Lasers.findByIdAndRemove(req.params.laserId)
+    .then((resp) => {
+        res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
-        res.json(Laser);
+        res.json(resp);
     }, (err) => next(err))
     .catch((err) => next(err));
 });
